@@ -4,8 +4,8 @@
 // Archivo: public/js/supabase.js
 // ============================================
 
-const SUPABASE_URL = "https://TU-PROYECTO.supabase.co";
-const SUPABASE_ANON_KEY = "TU_CLAVE_PUBLICA_ANON";
+const SUPABASE_URL = "https://el-criterio.onrender.com";
+const SUPABASE_ANON_KEY = "sb_publishable_qMexyuwiRelz7Ji5v1lqJA_PC2hOPXE";
 
 if (!window.supabase) {
     throw new Error(
