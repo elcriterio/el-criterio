@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Noticia | EL CRITERIO</title>
+
+    <meta name="description" content="Lee las últimas noticias de EL CRITERIO.">
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f6f8;
+            color: #172033;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topbar {
+            background: #101827;
+            color: white;
+            padding: 10px 6%;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topbar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .site-header {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 22px 6%;
+        }
+
+        .header-content {
+            max-width: 1250px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .brand {
+            text-decoration: none;
+            color: #101827;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .brand span {
+            color: #d62828;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #172033;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .main-nav a:hover {
+            color: #d62828;
+        }
+
+        .breadcrumb {
+            max-width: 1050px;
+            margin: 25px auto;
+            padding: 0 20px;
+            color: #788294;
+            font-size: 13px;
+        }
+
+        .breadcrumb a {
+            color: #d62828;
+            text-decoration: none;
+        }
+
+        .page-layout {
+            max-width: 1150px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: minmax(0, 760px) minmax(220px, 300px);
+            gap: 35px;
+            align-items: start;
+        }
+
+        .article-container {
+            background: white;
+            padding: 38px;
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: #d62828;
+            color: white;
+            padding: 7px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 3px;
+        }
+
+        .article-title {
+            margin: 20px 0 15px;
+            font-size: 38px;
+            line-height: 1.2;
+            font-weight: 900;
+            color: #101827;
+        }
+
+        .article-summary {
+            color: #687386;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 18px 0;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            color: #788294;
+            font-size: 12px;
+        }
+
+        .article-meta strong {
+            color: #172033;
+        }
+
+        .article-cover {
+            width: 100%;
+            margin: 25px 0 8px;
+        }
+
+        .article-cover img {
+            display: block;
+            width: 100%;
+            max-height: 470px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .image-caption {
+            color: #8992a1;
+            font-size: 11px;
+            margin-top: 9px;
+        }
+
+        .article-body {
+            margin-top: 30px;
+            color: #333d4d;
+            font-size: 17px;
+            line-height: 1.9;
+            overflow-wrap: anywhere;
+        }
+
+        .article-body p {
+            margin: 0 0 22px;
+        }
+
+        .article-body h2 {
+            color: #101827;
+            font-size: 24px;
+            margin: 30px 0 15px;
+        }
+
+        .article-body h3 {
+            color: #101827;
+            font-size: 20px;
+            margin: 25px 0 12px;
+        }
+
+        .article-body img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .article-share {
+            margin-top: 35px;
+            padding-top: 22px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .article-share strong {
+            display: block;
+            margin-bottom: 13px;
+            font-size: 14px;
+        }
+
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .share-buttons button,
+        .share-buttons a {
+            border: none;
+            border-radius: 4px;
+            padding: 10px 14px;
+            background: #101827;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .share-buttons .whatsapp {
+            background: #168c51;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .sidebar-box {
+            background: white;
+            border: 1px solid #e5e7eb;
+            padding: 22px;
+            border-radius: 5px;
+        }
+
+        .sidebar-box h2 {
+            font-size: 17px;
+            margin: 0 0 18px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #d62828;
+        }
+
+        .related-item {
+            padding: 13px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .related-item:last-child {
+            border-bottom: none;
+        }
+
+        .related-item a {
+            color: #172033;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .related-item a:hover {
+            color: #d62828;
+        }
+
+        .related-category {
+            display: block;
+            color: #d62828;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .loading-message,
+        .error-message {
+            padding: 40px 20px;
+            text-align: center;
+            color: #687386;
+        }
+
+        .error-message h2 {
+            color: #101827;
+        }
+
+        .error-message a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #d62828;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .site-footer {
+            background: #101827;
+            color: #aab2c0;
+            padding: 35px 6%;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .footer-brand {
+            color: white;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand span {
+            color: #d62828;
+        }
+
+        @media (max-width: 850px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .brand {
+                font-size: 27px;
+            }
+
+            .main-nav {
+                gap: 15px;
+            }
+
+            .article-container {
+                padding: 22px 17px;
+            }
+
+            .article-title {
+                font-size: 28px;
+            }
+
+            .article-summary {
+                font-size: 16px;
+            }
+
+            .article-body {
+                font-size: 16px;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <div class="topbar">
+        <span id="currentDate"></span>
+        <a href="/login">Acceso editorial</a>
+    </div>
+
+    <!-- ENCABEZADO -->
+    <header class="site-header">
+
+        <div class="header-content">
+
+            <a href="/" class="brand">
+                EL <span>CRITERIO</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a href="/">Inicio</a>
+                <a href="/?categoria=Actualidad">Actualidad</a>
+                <a href="/?categoria=Politica">Política</a>
+                <a href="/?categoria=Economia">Economía</a>
+                <a href="/?categoria=Deportes">Deportes</a>
+                <a href="/?categoria=Cultura">Cultura</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- RUTA DE NAVEGACIÓN -->
+    <div class="breadcrumb">
+        <a href="/">Inicio</a>
+        / <span id="breadcrumbCategory">Noticias</span>
+        / <span id="breadcrumbTitle">Cargando noticia...</span>
+    </div>
+
+    <!-- CONTENIDO -->
+    <main class="page-layout">
+
+        <!-- NOTICIA PRINCIPAL -->
+        <article class="article-container" id="articleContainer">
+
+            <div id="articleLoading" class="loading-message">
+                Cargando noticia...
+            </div>
+
+            <div id="articleError" class="error-message" hidden>
+                <h2>No se encontró la noticia</h2>
+
+                <p>
+                    La publicación puede haber sido eliminada,
+                    archivada o no estar disponible.
+                </p>
+
+                <a href="/">Volver a la página principal</a>
+            </div>
+
+            <div id="articleContent" hidden>
+
+                <span class="article-category" id="articleCategory">
+                    Categoría
+                </span>
+
+                <h1 class="article-title" id="articleTitle">
+                    Título de la noticia
+                </h1>
+
+                <p class="article-summary" id="articleSummary">
+                    Resumen de la noticia.
+                </p>
+
+                <div class="article-meta">
+
+                    <span>
+                        Por: <strong id="articleAuthor">Redacción</strong>
+                    </span>
+
+                    <span id="articleDate">
+                        Fecha de publicación
+                    </span>
+
+                </div>
+
+                <figure class="article-cover" id="articleFigure" hidden>
+
+                    <img
+                        id="articleImage"
+                        src=""
+                        alt=""
+                    >
+
+                    <figcaption
+                        class="image-caption"
+                        id="imageCaption"
+                    ></figcaption>
+
+                </figure>
+
+                <div class="article-body" id="articleBody">
+                    <!-- El contenido se cargará desde Supabase -->
+                </div>
+
+                <div class="article-share">
+
+                    <strong>Comparte esta noticia</strong>
+
+                    <div class="share-buttons">
+
+                        <a
+                            href="#"
+                            class="whatsapp"
+                            id="whatsappShare"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            WhatsApp
+                        </a>
+
+                        <a
+                            href="#"
+                            id="facebookShare"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Facebook
+                        </a>
+
+                        <button
+                            type="button"
+                            id="copyLinkButton"
+                        >
+                            Copiar enlace
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- BARRA LATERAL -->
+        <aside class="sidebar">
+
+            <section class="sidebar-box">
+
+                <h2>Noticias relacionadas</h2>
+
+                <div id="relatedArticles">
+
+                    <p class="loading-message">
+                        Cargando noticias...
+                    </p>
+
+                </div>
+
+            </section>
+
+            <section class="sidebar-box">
+
+                <h2>EL CRITERIO</h2>
+
+                <p style="font-size:14px; line-height:1.7; color:#687386;">
+                    Información, análisis y actualidad.
+                    Un espacio periodístico comprometido con
+                    informar con responsabilidad y criterio.
+                </p>
+
+                <a
+                    href="/"
+                    style="color:#d62828; font-weight:bold; font-size:13px; text-decoration:none;"
+                >
+                    Visitar página principal →
+                </a>
+
+            </section>
+
+        </aside>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="site-footer">
+
+        <div class="footer-brand">
+            EL <span>CRITERIO</span>
+        </div>
+
+        <p>
+            Información, análisis y actualidad.
+        </p>
+
+        <p>
+            © <span id="currentYear"></span> EL CRITERIO.
+            Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+    <script src="/js/article.js"></script>
+
+</body>
+</html>
