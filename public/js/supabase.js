@@ -4,7 +4,7 @@
 // Archivo: public/js/supabase.js
 // ============================================
 
-const SUPABASE_URL = "https://el-criterio.onrender.com";
+const SUPABASE_URL = "https://ctkuvuigqjnlxtucrwgg.supabase.co/rest/v1/";
 const SUPABASE_ANON_KEY = "sb_publishable_qMexyuwiRelz7Ji5v1lqJA_PC2hOPXE";
 
 if (!window.supabase) {
