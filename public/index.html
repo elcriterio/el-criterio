@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EL CRITERIO: información, actualidad y análisis.">
+  <meta name="theme-color" content="#101b2b">
+  <title>EL CRITERIO | Noticias</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <div class="topline">
+    <div class="container topline-inner">
+      <span>Información para entender lo que sucede</span>
+      <span id="today-date">Actualidad</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="EL CRITERIO, portada">
+        <span class="brand-mark">EC</span>
+        <span class="brand-name">EL CRITERIO</span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button"
+        aria-expanded="false" aria-controls="main-nav">Menú</button>
+      <nav class="main-nav" id="main-nav" aria-label="Secciones principales">
+        <a href="#actualidad">Actualidad</a>
+        <a href="#politica">Política</a>
+        <a href="#economia">Economía</a>
+        <a href="#deportes">Deportes</a>
+        <a href="#cultura">Cultura</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="breaking" aria-label="Presentación">
+      <span class="breaking-label">EL CRITERIO</span>
+      <p>Noticias, contexto y perspectivas.</p>
+    </section>
+
+    <section class="hero-grid" id="actualidad">
+      <article class="lead-story">
+        <div class="image-placeholder lead-image" role="img" aria-label="Espacio reservado para fotografía de portada">
+          <span>PORTADA</span>
+        </div>
+        <div class="story-content">
+          <span class="category">ACTUALIDAD</span>
+          <h1>Las noticias que importan, explicadas con claridad</h1>
+          <p class="summary">Este espacio estará reservado para la noticia principal del día, con su fotografía, titular y resumen.</p>
+          <p class="byline">Redacción EL CRITERIO · Próximamente</p>
+        </div>
+      </article>
+
+      <aside class="side-stories" aria-label="Noticias secundarias">
+        <article class="side-story">
+          <div class="image-placeholder side-image"><span>FOTO</span></div>
+          <div>
+            <span class="category">POLÍTICA</span>
+            <h2>Espacio para una noticia destacada</h2>
+            <p class="byline">Redacción EL CRITERIO</p>
+          </div>
+        </article>
+        <article class="side-story">
+          <div class="image-placeholder side-image"><span>FOTO</span></div>
+          <div>
+            <span class="category">ECONOMÍA</span>
+            <h2>Información relevante para todos los lectores</h2>
+            <p class="byline">Redacción EL CRITERIO</p>
+          </div>
+        </article>
+        <article class="side-story">
+          <div class="image-placeholder side-image"><span>FOTO</span></div>
+          <div>
+            <span class="category">DEPORTES</span>
+            <h2>Lo último del mundo deportivo</h2>
+            <p class="byline">Redacción EL CRITERIO</p>
+          </div>
+        </article>
+      </aside>
+    </section>
+
+    <section class="section-block" id="politica">
+      <div class="section-heading">
+        <h2>Últimas noticias</h2>
+        <span>EN DESARROLLO</span>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="image-placeholder card-image"><span>FOTO</span></div>
+          <span class="category">ACTUALIDAD</span>
+          <h3>Las publicaciones aparecerán aquí</h3>
+          <p>Cuando conectemos el panel editorial, las noticias publicadas se mostrarán automáticamente en esta sección.</p>
+        </article>
+        <article class="news-card" id="economia">
+          <div class="image-placeholder card-image"><span>FOTO</span></div>
+          <span class="category">ECONOMÍA</span>
+          <h3>Una portada preparada para crecer</h3>
+          <p>Organizaremos las noticias por secciones, fecha de publicación y relevancia.</p>
+        </article>
+        <article class="news-card" id="deportes">
+          <div class="image-placeholder card-image"><span>FOTO</span></div>
+          <span class="category">DEPORTES</span>
+          <h3>Información desde diferentes ámbitos</h3>
+          <p>El diseño se adaptará a celulares, tabletas y computadoras.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="newsletter-note" id="cultura">
+      <div>
+        <span class="category">NUESTRA PROPUESTA</span>
+        <h2>Informar con criterio.</h2>
+        <p>Un medio digital para presentar hechos, voces y análisis con responsabilidad.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand footer-brand" href="/"><span class="brand-mark">EC</span><span class="brand-name">EL CRITERIO</span></a>
+      <p>© <span id="current-year"></span> EL CRITERIO. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
