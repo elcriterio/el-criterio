@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel Editorial | EL CRITERIO</title>
+    <meta name="description" content="Panel de administración editorial de EL CRITERIO.">
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f2f4f7;
+            color: #172033;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .admin-header {
+            background: #101827;
+            color: white;
+            padding: 17px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .admin-brand {
+            color: white;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .admin-brand span {
+            color: #d62828;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            font-size: 13px;
+            color: #d1d5db;
+        }
+
+        .logout-button {
+            padding: 9px 15px;
+            background: #d62828;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .admin-container {
+            width: 90%;
+            max-width: 1250px;
+            margin: 35px auto;
+        }
+
+        .welcome-section {
+            margin-bottom: 28px;
+        }
+
+        .welcome-section h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        .welcome-section p {
+            color: #687386;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .role-label {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 12px;
+            background: #fee2e2;
+            color: #b91c1c;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 22px;
+            border-radius: 7px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .stat-card span {
+            display: block;
+            color: #687386;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card strong {
+            font-size: 28px;
+        }
+
+        .admin-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
+            gap: 22px;
+            align-items: start;
+        }
+
+        .admin-panel {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 7px;
+            padding: 25px;
+        }
+
+        .panel-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .panel-heading h2 {
+            margin: 0;
+            font-size: 19px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #d8dde5;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #d62828;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .form-group .content-input {
+            min-height: 240px;
+        }
+
+        .form-help {
+            display: block;
+            color: #788294;
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        .primary-button {
+            padding: 12px 17px;
+            background: #d62828;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .primary-button:hover {
+            background: #b51e25;
+        }
+
+        .secondary-button {
+            padding: 10px 14px;
+            background: #e5e7eb;
+            color: #172033;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .article-item {
+            padding: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
+        }
+
+        .article-item h3 {
+            font-size: 15px;
+            margin: 0 0 8px;
+        }
+
+        .article-meta {
+            color: #788294;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .article-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .article-actions button {
+            padding: 7px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .edit-button {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .delete-button {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .empty-message {
+            color: #788294;
+            font-size: 13px;
+            padding: 15px 0;
+        }
+
+        .admin-message {
+            display: none;
+            padding: 12px;
+            margin-bottom: 18px;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        .admin-message.error {
+            display: block;
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .admin-message.success {
+            display: block;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .admin-footer {
+            text-align: center;
+            color: #8992a1;
+            font-size: 12px;
+            padding: 25px;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 850px) {
+            .admin-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-container {
+                width: 94%;
+            }
+
+            .admin-panel {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="admin-header">
+
+        <a href="/" class="admin-brand">
+            EL <span>CRITERIO</span>
+        </a>
+
+        <div class="header-actions">
+
+            <span class="user-info" id="userEmail">
+                Verificando usuario...
+            </span>
+
+            <button
+                type="button"
+                class="logout-button"
+                id="logoutButton"
+            >
+                Cerrar sesión
+            </button>
+
+        </div>
+
+    </header>
+
+    <main class="admin-container">
+
+        <!-- BIENVENIDA -->
+        <section class="welcome-section">
+
+            <h1>Panel editorial</h1>
+
+            <p>
+                Administra las publicaciones y el contenido de EL CRITERIO.
+            </p>
+
+            <span class="role-label" id="userRole">
+                Verificando permisos...
+            </span>
+
+        </section>
+
+        <!-- MENSAJES DEL SISTEMA -->
+        <div
+            id="adminMessage"
+            class="admin-message"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+        <!-- ESTADÍSTICAS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <span>Total de noticias</span>
+                <strong id="totalArticles">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>Noticias publicadas</span>
+                <strong id="publishedArticles">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>Noticias en borrador</span>
+                <strong id="draftArticles">0</strong>
+            </div>
+
+        </section>
+
+        <div class="admin-layout">
+
+            <!-- FORMULARIO DE PUBLICACIONES -->
+            <section class="admin-panel" id="editorPanel">
+
+                <div class="panel-heading">
+                    <h2 id="formTitle">Nueva noticia</h2>
+                </div>
+
+                <form id="articleForm">
+
+                    <input type="hidden" id="articleId">
+
+                    <div class="form-group">
+                        <label for="title">Título de la noticia</label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="Escribe el título"
+                            maxlength="180"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="summary">Resumen</label>
+
+                        <textarea
+                            id="summary"
+                            name="summary"
+                            placeholder="Escribe una breve descripción de la noticia"
+                            maxlength="500"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Categoría</label>
+
+                        <select id="category" name="category" required>
+                            <option value="">Seleccionar categoría</option>
+                            <option value="Actualidad">Actualidad</option>
+                            <option value="Política">Política</option>
+                            <option value="Economía">Economía</option>
+                            <option value="Deportes">Deportes</option>
+                            <option value="Cultura">Cultura</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Fotografía de portada</label>
+
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            accept="image/png,image/jpeg,image/webp"
+                        >
+
+                        <span class="form-help">
+                            Formatos permitidos: JPG, PNG y WEBP.
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content">Contenido de la noticia</label>
+
+                        <textarea
+                            id="content"
+                            name="content"
+                            class="content-input"
+                            placeholder="Redacta aquí el contenido completo de la noticia..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Estado de publicación</label>
+
+                        <select id="status" name="status" required>
+                            <option value="borrador">Guardar como borrador</option>
+                            <option value="publicado">Publicar noticia</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                            id="saveArticleButton"
+                        >
+                            Guardar noticia
+                        </button>
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="cancelEditButton"
+                            hidden
+                        >
+                            Cancelar edición
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!-- LISTADO DE NOTICIAS -->
+            <section class="admin-panel">
+
+                <div class="panel-heading">
+                    <h2>Mis publicaciones</h2>
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="refreshArticlesButton"
+                    >
+                        Actualizar
+                    </button>
+                </div>
+
+                <div id="articleList" class="article-list">
+
+                    <p class="empty-message">
+                        Cargando publicaciones...
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer class="admin-footer">
+        © <span id="currentYear"></span> EL CRITERIO.
+        Sistema de gestión editorial.
+    </footer>
+
+    <script src="/js/auth.js"></script>
+    <script src="/js/admin.js"></script>
+
+</body>
+</html>
