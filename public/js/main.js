@@ -97,21 +97,19 @@ function renderLead(article) {
   if (!leadStory) return;
 
   leadStory.innerHTML = `
-    <article class="lead-story">
-      <a href="${articleURL(article)}" aria-label="${escapeHTML(article.title)}">
-        ${imageHTML(article, "lead-image")}
-      </a>
-      <div class="story-content">
-        <span class="category">${escapeHTML(article.category || "ACTUALIDAD")}</span>
-        <h1>
-          <a href="${articleURL(article)}">${escapeHTML(article.title)}</a>
-        </h1>
-        <p class="summary">${escapeHTML(article.summary || "")}</p>
-        <p class="byline">
-          Redacción EL CRITERIO · ${formatDate(article.published_at || article.created_at)}
-        </p>
-      </div>
-    </article>
+    <a href="${articleURL(article)}">
+      ${imageHTML(article, "lead-image")}
+    </a>
+    <div class="story-content">
+      <span class="category">${escapeHTML(article.category || "ACTUALIDAD")}</span>
+      <h1>
+        <a href="${articleURL(article)}">${escapeHTML(article.title)}</a>
+      </h1>
+      <p class="summary">${escapeHTML(article.summary || "")}</p>
+      <p class="byline">
+        Redacción EL CRITERIO · ${formatDate(article.published_at || article.created_at)}
+      </p>
+    </div>
   `;
 }
 
