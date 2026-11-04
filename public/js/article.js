@@ -56,13 +56,21 @@ function showArticleError() {
 }
 
 // Obtener autor.
-async function getArticleAuthor(authorId) {
-    if (!authorId) return "Redacción EL CRITERIO";
+async function getArticleAuthor(article) {
+    // Primero utilizamos el autor seleccionado al publicar.
+    if (article.author_name && article.author_name.trim()) {
+        return article.author_name.trim();
+    }
+
+    // Compatibilidad con noticias antiguas.
+    if (!article.author_id) {
+        return "Redacción EL CRITERIO";
+    }
 
     const { data, error } = await articleDB
         .from("profiles")
         .select("full_name")
-        .eq("id", authorId)
+        .eq("id", article.author_id)
         .maybeSingle();
 
     if (error || !data || !data.full_name) {
@@ -74,7 +82,7 @@ async function getArticleAuthor(authorId) {
 
 // Mostrar datos de la noticia.
 async function renderArticle(article) {
-    const author = await getArticleAuthor(article.author_id);
+    const author = await getArticleAuthor(article);
 
     document.title = `${article.title} | EL CRITERIO`;
 
