@@ -240,12 +240,13 @@ async function saveArticle(event) {
         const title = document.getElementById("title").value.trim();
         const summary = document.getElementById("summary").value.trim();
         const category = document.getElementById("category").value;
+        const authorName = document.getElementById("authorName").value;
         const content = document.getElementById("content").value.trim();
         const status = document.getElementById("status").value;
 
         const imageFile = document.getElementById("image").files[0];
 
-        if (!title || !summary || !category || !content) {
+        if (!title || !summary || !category || !authorName || !content) {
             throw new Error("Completa todos los campos obligatorios.");
         }
 
@@ -267,6 +268,7 @@ async function saveArticle(event) {
             title,
             summary,
             category,
+            author_name: authorName,
             content,
             image_url: imageUrl,
             status,
@@ -347,6 +349,7 @@ function editArticle(id) {
     document.getElementById("title").value = article.title || "";
     document.getElementById("summary").value = article.summary || "";
     document.getElementById("category").value = article.category || "";
+    document.getElementById("authorName").value = article.author_name || "";
     document.getElementById("content").value = article.content || "";
     document.getElementById("status").value = article.status || "borrador";
 
